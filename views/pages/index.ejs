@@ -1,0 +1,35 @@
+<html>
+  <title> File Handling </title>
+  <body>
+    <ol>
+    <% list.forEach(function(item) { %>
+            <li><%= item %></li>
+        <% }); %>
+    </ol>
+    <hr>
+    <form action = "/write" method = "POST">
+    Write to file:<br>
+    <input type="text" name="data" placeholder="Enter data">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+    <hr>
+
+    <form action = "/update" method = "POST">
+    Update a line in file:<br>
+    <input type="text" name="line" placeholder="Enter line number">
+    <br>
+    <input type="text" name="data" placeholder="Enter data">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+    <hr>
+    
+    <form action = "/delete" method = "POST">
+    Delete a line in file:<br>
+     <input type="text" name="line" placeholder="Enter line number">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
