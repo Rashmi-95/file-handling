@@ -1,12 +1,12 @@
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const fs = require('fs')
+const Sequelize = require('sequelize')
 app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json())
-const fileName = `/Users/rashmiranganathan/Documents/eslint/file-handling/readme.txt`
+// const fileName = `/Users/rashmiranganathan/Documents/eslint/file-handling/readme.txt`
 
 app.get('/', function (req, res) {
   res.send(`Welcome!!
@@ -16,9 +16,15 @@ app.get('/', function (req, res) {
 })
 
 app.get('/read', function (req, res) {
-  res.sendFile(fileName)
+  const sequelize = new Sequelize('postgres://localhost:5432/todo')
+  sequelize.query(`INSERT INTO task VALUE (2,'see documentation',false)`,
+  { type: sequelize.QueryTypes.INSERT})
+  .then(function (users) {
+
+  })
 })
 
+/*
 app.post('/write/:content', function (req, res) {
   const contentToWrite = req.params.content
   fs.appendFile(fileName, `\n${contentToWrite}`, function (err) {
@@ -69,6 +75,6 @@ app.delete('/delete/:line', function (req, res) {
       }
     }
   })
-})
+}) */
 app.listen(3006)
 
