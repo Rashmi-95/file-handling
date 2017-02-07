@@ -2,12 +2,15 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
+const sequelize = new Sequelize('postgres://localhost:5432/todo')
 app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json())
-// const fileName = `/Users/rashmiranganathan/Documents/eslint/file-handling/readme.txt`
-
+const readFromDB = require('./readDb.js')
+const writeToDB = require('./writeDb.js')
+const UpdateDB = require('./updateDb.js')
+const deleteFromDB = require('./deleteDb')
 app.get('/', function (req, res) {
   res.send(`Welcome!!
   * To read the file append '/read' to search bar
@@ -16,65 +19,24 @@ app.get('/', function (req, res) {
 })
 
 app.get('/read', function (req, res) {
-  const sequelize = new Sequelize('postgres://localhost:5432/todo')
-  sequelize.query(`INSERT INTO task VALUE (2,'see documentation',false)`,
-  { type: sequelize.QueryTypes.INSERT})
-  .then(function (users) {
-
-  })
+  readFromDB(sequelize, res)
 })
 
-/*
 app.post('/write/:content', function (req, res) {
   const contentToWrite = req.params.content
-  fs.appendFile(fileName, `\n${contentToWrite}`, function (err) {
-    if (err) throw err
-  })
-  res.send(`'${contentToWrite}' is written to the file`)
+  writeToDB(sequelize, res, contentToWrite)
 })
 
-app.put('/update/:line', function (req, res) {
-  const lineNumber = req.params.line
-  const data = req.body.data
-  fs.readFile(fileName, function doneReading (error, fileContents) {
-    if (error) {
-      res.status(500).send('file not found')
-    } else {
-      const fileContentArray = fileContents.toString().split('\n')
-      if (fileContentArray.length < Number(lineNumber) + 1) {
-        res.status(500).send('line not found')
-      } else {
-        fileContentArray[lineNumber] = data
-        const fileContent = fileContentArray.join('\n')
-        fs.writeFile(fileName, fileContent, function (err) {
-          if (err) return console.log(err)
-        })
-        res.send(`The file is updated`)
-      }
-    }
-  })
+app.put('/update/:id/', function (req, res) {
+  const description = req.body.description
+  const status = req.body.status
+  const id = req.params.id
+  UpdateDB(sequelize, res, description, status, id)
 })
 
-app.delete('/delete/:line', function (req, res) {
-  const lineNumber = req.params.line
-  fs.readFile(fileName, function doneReading (error, fileContents) {
-    if (error) {
-      res.status(500).send('file not found')
-    } else {
-      const fileContentArray = fileContents.toString().split('\n')
-      if (fileContentArray.length < Number(lineNumber) + 1) {
-        res.status(500).send('line not found')
-      } else {
-        fileContentArray.splice(lineNumber, 1)
-        const fileContent = fileContentArray.join('\n')
+app.delete('/delete/:id', function (req, res) {
+  const id = req.params.id
+  deleteFromDB(sequelize, res, id)
+})
 
-        fs.writeFile(fileName, fileContent, function (err) {
-          if (err) return console.log(err)
-        })
-        res.send(`The line number ${lineNumber} is deleted`)
-      }
-    }
-  })
-}) */
 app.listen(3006)
-
