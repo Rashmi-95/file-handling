@@ -1,0 +1,38 @@
+<html>
+<head>
+  <title> File Handling </title>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <ol>
+
+    </ol>
+    <hr>
+    <form action = "/write" method = "POST">
+    Write to file:<br>
+    <input type="text" name="data" placeholder="Enter data">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+    <hr>
+
+    <form action = "/update" method = "POST">
+    Update a line in file:<br>
+    <input type="text" name="line" placeholder="Enter line number">
+    <br>
+    <input type="text" name="data" placeholder="Enter data">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+    <hr>
+
+    <form action = "/delete" method = "POST">
+    Delete a line in file:<br>
+     <input type="text" name="line" placeholder="Enter line number">
+    <br>
+    <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
