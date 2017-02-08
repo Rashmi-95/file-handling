@@ -1,0 +1,86 @@
+body {
+    background-color: lightblue;
+    margin:20px;
+}
+h1 {
+    font-size: 60px;
+    color: black;
+    text-align: center;
+}
+#header{
+    color: white;
+    text-align: center;
+}
+#update{
+    width:92%;
+    margin: 50px 100px
+}
+#result{
+    width:92%;
+    margin: 0px 50px
+}
+input {
+    border: none;
+    width: 70%;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+}
+.delete{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 14px;
+}
+.delete:hover {
+    background-color: #f44336;
+    color: white;
+}
+.update{
+    float: right;
+    margin-right: 50px;
+    padding: 5px;
+    font-size: 10px;
+    border-radius: 5px;
+}
+.update:hover {
+    background-color: green;
+    color: white;
+}
+#write_button{
+    margin: 0px 10px;
+    position: absolute;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+ul{
+    list-style:none;
+}
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+}
+ul li:nth-child(odd) {
+    background: #f9f9f9;
+}
+ul li:hover {
+    background: #ddd;
+}
+#update-todo{
+    margin-left:10px;
+    width:60%;
+}
+select{
+    border: none;
+    width: 12%;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 16px;
+    overflow: hidden;
+}

@@ -2,13 +2,26 @@
 
 <head>
   <title> TODO list </title>
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous">
-    </script>
+  <link rel="stylesheet" type="text/css" href="style.css"> 
 </head>
 <body>
-<div id="result">
-</div>
- <script src="jqueryform.js"></script>
-  </body>
-  </html>
+  <div id = "header">
+    <h1>todos</h1>
+    <input id="new-todo" type="text" name="data" placeholder="What needs to be done?">
+    <button id="write_button"> submit</button>
+  </div>
+  <div id = "result"></div>
+  <div id = "update">
+  * Fill the details and click on update of that item<br>
+  <input id="update-todo" type="text" name="update" placeholder="Want to update Data?">
+      <select id="update-status-todo">
+        <option value="false">Incomplete</option>
+        <option value="true">Completed</option>
+      </select>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+  <script src="jqueryform.js"></script>
+  <script src="javascript.js"></script>
+</body>
+</html>

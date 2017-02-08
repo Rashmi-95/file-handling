@@ -3,7 +3,7 @@ module.exports = function (sequelize, res, id) {
     .then(function (task) {
       if (task[1].rowCount) {
         console.log('The task is deleted')
-        res.send(`The task with id =${id} has been deleted`)
+        res.send(`The task has been deleted`)
       } else {
         console.log('The task doesnt exist to delete')
         res.send(`The task with id =${id} doesnt exist to delete`)

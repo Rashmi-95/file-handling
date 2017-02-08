@@ -15,18 +15,11 @@ const readFromDB = require('./readDb.js')
 const writeToDB = require('./writeDb.js')
 const UpdateDB = require('./updateDb.js')
 const deleteFromDB = require('./deleteDb')
-/* app.get('/', function (req, res) {
-  res.send(`Welcome!!
-  * To read the file append '/read' to search bar
-  * To write to the file append '/write/text' to search bar
-  * To change a particular line in the file append '/update/line' to search bar & write line content into 'data'`)
-})
-*/
+
 app.get('/', function (req, res) {
   res.render('pages/index')
 })
-app.get('/api/read', function (req, res) {
- // console.log('bajdbf')
+app.get('/read', function (req, res) {
   readFromDB(sequelize, res)
 })
 
